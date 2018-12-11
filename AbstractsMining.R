@@ -8,7 +8,7 @@ my_corpus <- corpus(titles)
 docvars(my_corpus, "Year") <- papers$PY
 docvars(my_corpus, "Citations") <- papers$TC
 docvars(my_corpus, "Journal") <- papers$SO
-avert <- summary(my_corpus, n=6714)
+avert <- summary(my_corpus, n=6678)
 
 
 CIHB <- corpus_subset(my_corpus, Journal == "COMPUTERS IN HUMAN BEHAVIOR")
@@ -25,7 +25,7 @@ summary(HCI)
 #kwic(CYBER, "behavior")
 #kwic(HCI, "behavior")
 
-clichewords <- c("©", "also", "can", "study", "ltd", "research", "elsevier", "reserved", "rights", "using", "used", "mary", "ann", "liebert", "inc", "results")
+clichewords <- c("©", "also", "can", "study", "ltd", "research", "elsevier", "reserved", "rights", "using", "used", "mary", "ann", "liebert", "inc", "results", "online")
 tdmCIHB <- dfm(CIHB, remove = c(stopwords("en"), clichewords), remove_punct = TRUE)
 topfeatures(tdmCIHB, 20)
   
@@ -177,4 +177,7 @@ FigA <- ggarrange(Fig1, Fig2, Fig3, Fig4,
 labels = c("(A)", "(B)", "(C)", "(D)"),
 ncol = 2, nrow = 2)
 FigA
+write.csv(ClusterAll, "Clusters.csv")
 
+MostCited <- analizables  %>% filter(TC >= 550)
+ 
