@@ -38,7 +38,7 @@ Produccion$Articles <- as.numeric(Produccion$Articles)
 
 # Let's plot our first figure
 library(ggplot2)
-Fig1A <- ggplot(Paises, aes(x=reorder(Country, Freq) , y=Freq)) + geom_bar(stat = "identity", fill="blue") + coord_flip() + xlab("Country") + ylab("Relative Frequency")
+Fig1A <- ggplot(Paises, aes(x=reorder(Country, Freq) , y=Freq)) + geom_bar(stat = "identity", fill="green") + coord_flip() + xlab("Country") + ylab("Relative Frequency")
 Fig1B <- ggplot(Produccion, aes(x=Year , y=Articles)) + geom_bar(stat = "identity", fill="blue") + xlab("Year") + ylab("Articles") + theme(axis.text.x = element_text(angle = 90, hjust = 1))
 library(ggpubr)
 ggarrange(Fig1A, Fig1B, labels = c("A", "B"), ncol = 2, nrow = 1)
